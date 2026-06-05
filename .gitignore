@@ -1,0 +1,5 @@
+# Wygenerowane animacje (robocze) - ignorujemy,
+# ale finalny plik animacja.gif trzymamy w repo.
+/*.gif
+out.gif
+!animacja.gif
