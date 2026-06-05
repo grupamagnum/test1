@@ -47,6 +47,7 @@ Wynik domyslnie zapisywany jest do `out.gif`.
 | `FPS`        | `30`      | klatki na sekunde |
 | `BOOMERANG`  | `1`       | `1` = tam i z powrotem, `0` = tylko w przod |
 | `TRANSITION` | `fade`    | rodzaj przejscia `xfade` (np. `fade`, `dissolve`, `smoothleft`) |
+| `COLORS`     | `256`     | liczba kolorow palety (mniej = mniejszy plik GIF) |
 
 Przyklad - wolniejsza, wieksza animacja zapisana do `profil.gif`:
 

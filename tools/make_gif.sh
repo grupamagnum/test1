@@ -24,6 +24,7 @@
 #   FPS=30             klatki na sekunde               (domyslnie 30)
 #   BOOMERANG=1        1 = odtwarzaj tam i z powrotem, 0 = tylko w przod
 #   TRANSITION=fade    rodzaj przejscia xfade (fade, dissolve, smoothleft...)
+#   COLORS=256         liczba kolorow palety (mniej = mniejszy plik GIF)
 #
 # Przyklady:
 #   tools/make_gif.sh frames/1.jpg frames/2.jpg frames/3.jpg
@@ -40,6 +41,7 @@ TRANS="${TRANS:-0.6}"
 FPS="${FPS:-30}"
 BOOMERANG="${BOOMERANG:-1}"
 TRANSITION="${TRANSITION:-fade}"
+COLORS="${COLORS:-256}"   # liczba kolorow w palecie GIF (mniej = mniejszy plik)
 
 # --- sprawdzenie zaleznosci ------------------------------------------------
 if ! command -v ffmpeg >/dev/null 2>&1; then
@@ -126,7 +128,7 @@ else
 fi
 
 # generowanie palety dla wysokiej jakosci GIF-a
-PALETTE="${FINAL}split[p1][p2];[p1]palettegen=stats_mode=full[pal];"
+PALETTE="${FINAL}split[p1][p2];[p1]palettegen=max_colors=${COLORS}:stats_mode=full[pal];"
 PALETTE+="[p2][pal]paletteuse=dither=bayer:bayer_scale=3:diff_mode=rectangle[gif]"
 
 FILTER="${PRE}${CHAIN}${LOOP}${PALETTE}"
